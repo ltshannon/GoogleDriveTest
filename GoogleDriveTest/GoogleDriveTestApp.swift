@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct GoogleDriveTestApp: App {
     @StateObject var columnStepperEnv: ColumnStepperEnv = ColumnStepperEnv(gridColumns: Array(repeating: GridItem(.flexible()), count: 3), numColumns: 3)
-    @StateObject var listFileService: ListFileService = ListFileService()
+    @StateObject var saveFielService = SaveFileService()
     
     var body: some Scene {
         WindowGroup {
@@ -18,7 +18,7 @@ struct GoogleDriveTestApp: App {
                 ContentView()
             }
             .environmentObject(columnStepperEnv)
-            .environmentObject(listFileService)
+            .environmentObject(saveFielService)
         }
     }
 }
