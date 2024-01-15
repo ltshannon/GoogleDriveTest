@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DownloadImageView: View {
     @ObservedObject var getFileDataService: GetFileDataService = GetFileDataService()
+    @ObservedObject var imageSaver = ImageSaverService()
     var file: MyFile
     
     var body: some View {
@@ -18,7 +19,6 @@ struct DownloadImageView: View {
                     .resizable()
                     .scaledToFit()
                 Button("Save Image to photo library") {
-                    let imageSaver = ImageSaverService()
                     imageSaver.writeToPhotoAlbum(image: uiImage)
                 }
                 .DefaultTextButtonStyle()
@@ -26,6 +26,11 @@ struct DownloadImageView: View {
         }
         .task {
             await getFileDataService.getData(id: file.fileId)
+        }
+        .alert("Save Image", isPresented: $imageSaver.showSaved) {
+            Button("Ok", role: .cancel) {  }
+        } message: {
+            Text("Succeeded")
         }
     }
 }
