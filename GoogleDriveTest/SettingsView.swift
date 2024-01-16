@@ -11,8 +11,9 @@ import SwiftUI
 
 struct SettingsView: View {
     @Dependency(\.googleDriveClient) var client
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     @Binding var isSignedIn: Bool
+    @State var showPrivatePolicy = false
     
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct SettingsView: View {
                     Task {
                         await client.auth.signOut()
                         isSignedIn = false
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }
                 } label: {
                     Text("Sign Out")
@@ -31,8 +32,10 @@ struct SettingsView: View {
             } else {
                 Text("You are signed out")
             }
+            Link("Privacy Policy", destination: URL(string: "https://drive.google.com/file/d/17PeKroJCJooojBkip4nYA5syXAQRgQZO/view?usp=sharing")!)
+                .DefaultTextButtonStyle()
             Button(role: .destructive) {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             } label: {
                 Text("Cancel")
                     .DefaultTextButtonStyle()
