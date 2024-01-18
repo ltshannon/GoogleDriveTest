@@ -3,4 +3,54 @@
    uuid = "F19FB033-2A57-430F-9CCD-76BA8AD3D3FA"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "19631C4D-9E0F-4960-A94D-E38E437A54DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleDriveTest/GoogleDriveTestApp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "application(_:didReceiveRemoteNotification:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "19631C4D-9E0F-4960-A94D-E38E437A54DB - 29efccf579f40cdc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GoogleDriveTest.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;) async -&gt; __C.UIBackgroundFetchResult"
+                  moduleName = "GoogleDriveTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/larryshannon/Desktop/GoogleDriveTest/GoogleDriveTest/GoogleDriveTestApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "19631C4D-9E0F-4960-A94D-E38E437A54DB - 29efccf579f40cdc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GoogleDriveTest.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;) async -&gt; __C.UIBackgroundFetchResult"
+                  moduleName = "GoogleDriveTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/larryshannon/Desktop/GoogleDriveTest/GoogleDriveTest/GoogleDriveTestApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

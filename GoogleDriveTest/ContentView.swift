@@ -10,9 +10,11 @@ import GoogleDriveClient
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var firebaseService: FirebaseService
     @Dependency(\.googleDriveClient) var client
     @State var isSignedIn = false
     @State private var showSettings = false
+    @State private var firstTime = true
     
     var body: some View {
         ZStack {
@@ -34,6 +36,12 @@ struct ContentView: View {
             }
         }
         .navigationTitle("My Drive Photos")
+        .onAppear {
+            if firstTime {
+                firebaseService.getFCM()
+                firstTime = false
+            }
+        }
         .task {
             for await isSignedIn in client.auth.isSignedInStream() {
                 self.isSignedIn = isSignedIn

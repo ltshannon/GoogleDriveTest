@@ -13,6 +13,9 @@ import PhotosUI
 struct HomeView: View {
     @EnvironmentObject var columnStepperEnv: ColumnStepperEnv
     @EnvironmentObject var saveFileService: SaveFileService
+    @EnvironmentObject var notificationManager: NotificationManager
+    @EnvironmentObject var firebaseService: FirebaseService
+    @Environment(\.scenePhase) var scenePhase
     @Dependency(\.googleDriveClient) var client
     @ObservedObject var listFileService: ListFileService = ListFileService()
     var fileId: String? = nil
@@ -22,6 +25,7 @@ struct HomeView: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var fileUploadFailedMessage = ""
     @State private var showUploadError = false
+    @State var badgeManager = AppAlertBadgeManager(application: UIApplication.shared)
     
     private var columnsTitle: String {
         columnStepperEnv.gridColumns.count > 1 ? "\(columnStepperEnv.gridColumns.count) Columns" : "1 Column"
@@ -73,6 +77,13 @@ struct HomeView: View {
             Task {
                 await listFileService.getData(fileId != nil ? fileId : nil)
             }
+            UNUserNotificationCenter.current().requestAuthorization(options: .badge) { (_, _) in }
+            badgeManager.resetAlertBadgetNumber()
+        }
+        .onChange(of: scenePhase) { oldValue, newValue in
+            if newValue == .active {
+                badgeManager.resetAlertBadgetNumber()
+            }
         }
         .onChange(of: selectedItem) { newItem, oldItem in
             guard let item = newItem else {
@@ -96,6 +107,9 @@ struct HomeView: View {
                 }
             }
         }
+        .onChange(of: firebaseService.fcms, { oldValue, newValue in
+            debugPrint("🦁", "fcms: \(newValue)")
+        })
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button(isEditing ? "Done" : "Edit") {
@@ -119,6 +133,22 @@ struct HomeView: View {
         } message: {
             Text(fileUploadFailedMessage)
         }
+        .onChange(of: notificationManager.fcmToken, { oldValue, newValue in
+            if newValue.isEmpty == false {
+                debugPrint("🛎️", "Set fcmToken")
+                // check fcms for value
+                Task {
+                    if let items = await firebaseService.readFCMs() {
+                        let result = items.contains { item in
+                            item.fcm == newValue
+                        }
+                        if result == false {
+                            await firebaseService.writeFCM(fcm: newValue)
+                        }
+                    }
+                }
+            }
+        })
     }
 }
 
