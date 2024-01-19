@@ -50,7 +50,7 @@ struct HomeView: View {
                     ForEach(listFileService.imageFiles) { item in
                         GeometryReader { geo in
                             NavigationLink {
-                                DownloadImageView(file: item)
+                                DownloadImageView(file: item, images: listFileService.imageFiles)
                             } label: {
                                 GridItemView(size: geo.size.width, file: item)
                             }
