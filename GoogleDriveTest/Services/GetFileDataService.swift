@@ -14,18 +14,18 @@ class GetFileDataService: ObservableObject {
     @Published var imageData: Data?
     var fileManagerService = FileManagerService()
 
-    func getData(id: String) async {
+    func getData(file: MyFile) async {
         do {
-            if let data = fileManagerService.getImageData(id: id) {
+            if let data = fileManagerService.getImageData(file: file) {
                 DispatchQueue.main.async {
                     self.imageData = data
                 }
                 return
             }
-            let params = GetFileData.Params(fileId: id)
+            let params = GetFileData.Params(fileId: file.fileId)
             let data = try await client.getFileData(params)
             
-            fileManagerService.saveImageData(data: data, id: id)
+            fileManagerService.saveImageData(data: data, file: file)
             
             DispatchQueue.main.async {
                 self.imageData = data

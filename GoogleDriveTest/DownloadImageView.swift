@@ -6,25 +6,27 @@
 //
 
 import SwiftUI
+import PDFKit
+import AVKit
 
 struct DownloadImageView: View {
     @ObservedObject var getFileDataService: GetFileDataService = GetFileDataService()
     @ObservedObject var imageSaver = ImageSaverService()
     var file: MyFile
     var images: [MyFile] = []
-    @State var currentFile =  MyFile(id: "", fileId: "", mimeType: "", name: "", createdTime: Date(), modifiedTime: Date())
+    @State var currentFile =  MyFile(id: "", fileId: "", mimeType: .none, name: "", createdTime: Date(), modifiedTime: Date(), ext: .none)
     @State var leftArrow = true
     @State var rightArrow = true
-    @State var leftFile: MyFile = MyFile(id: "", fileId: "", mimeType: "", name: "", createdTime: Date(), modifiedTime: Date())
-    @State var rightFile: MyFile = MyFile(id: "", fileId: "", mimeType: "", name: "", createdTime: Date(), modifiedTime: Date())
+    @State var leftFile: MyFile = MyFile(id: "", fileId: "", mimeType: .none, name: "", createdTime: Date(), modifiedTime: Date(), ext: .none)
+    @State var rightFile: MyFile = MyFile(id: "", fileId: "", mimeType: .none, name: "", createdTime: Date(), modifiedTime: Date(), ext: .none)
     
     var body: some View {
         VStack {
-            if let data = getFileDataService.imageData, let uiImage = UIImage(data: data) {
+            if let data = getFileDataService.imageData {
                 HStack {
                     Button {
                         currentFile = leftFile
-                        loadImageFile(id: currentFile.fileId)
+                        loadImageFile(file: currentFile)
                         setArrows()
                     } label: {
                         Image(systemName: "chevron.left")
@@ -33,12 +35,22 @@ struct DownloadImageView: View {
                             .frame(width: 25)
                     }
                     .disabled(leftArrow)
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
+                    switch currentFile.mimeType {
+                    case .jpeg:
+                        DisplayImage(data: data)
+                    case .pdf:
+                        DisplayPDF(file: currentFile)
+                    case .mp4:
+                        DisplayMP4(file: currentFile)
+                    case .folder:
+                        Text("")
+                    case .none:
+                        Text("")
+                    }
+
                     Button {
                         currentFile = rightFile
-                        loadImageFile(id: currentFile.fileId)
+                        loadImageFile(file: currentFile)
                         setArrows()
                     } label: {
                         Image(systemName: "chevron.right")
@@ -48,17 +60,21 @@ struct DownloadImageView: View {
                     }
                     .disabled(rightArrow)
                 }
-                Button("Save Image to photo library") {
-                    imageSaver.writeToPhotoAlbum(image: uiImage)
+                if currentFile.mimeType == .jpeg {
+                    Button("Save Image to photo library") {
+                        if let uiImage = UIImage(data: data) {
+                            imageSaver.writeToPhotoAlbum(image: uiImage)
+                        }
+                    }
+                    .DefaultTextButtonStyle()
                 }
-                .DefaultTextButtonStyle()
                 Spacer()
             }
         }
         .onAppear {
             guard images.count > 0 else { return }
             currentFile = file
-            loadImageFile(id: currentFile.fileId)
+            loadImageFile(file: currentFile)
             setArrows()
         }
         .alert("Save Image", isPresented: $imageSaver.showSaved) {
@@ -68,9 +84,9 @@ struct DownloadImageView: View {
         }
     }
     
-    func loadImageFile(id: String) {
+    func loadImageFile(file: MyFile) {
         Task {
-            await getFileDataService.getData(id: id)
+            await getFileDataService.getData(file: file)
         }
     }
     
@@ -102,6 +118,62 @@ struct DownloadImageView: View {
             } else {
                 leftArrow = true
             }
+        }
+    }
+}
+
+struct DisplayImage: View {
+    var data: Data
+    @State private var currentZoom = 0.0
+    @State private var totalZoom = 1.0
+    
+    var body: some View {
+        if let uiImage = UIImage(data: data) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .scaledToFit()
+                .scaleEffect(currentZoom + totalZoom)
+                .gesture(
+                    MagnifyGesture()
+                        .onChanged { value in
+                            currentZoom = value.magnification - 1
+                        }
+                        .onEnded { value in
+                            totalZoom += currentZoom
+                            currentZoom = 0
+                        }
+                )
+                .accessibilityZoomAction { action in
+                    if action.direction == .zoomIn {
+                        totalZoom += 1
+                    } else {
+                        totalZoom -= 1
+                    }
+                }
+        }
+    }
+}
+
+struct DisplayPDF: View {
+    var file: MyFile
+    var fileManagerService = FileManagerService()
+    
+    var body: some View {
+        if let url = fileManagerService.getPathForData(file: file), let pdfDoc = PDFDocument(url: url) {
+            PDFKitView(showing: pdfDoc)
+                .scaledToFit()
+        }
+    }
+}
+
+struct DisplayMP4: View {
+    var file: MyFile
+    var fileManagerService = FileManagerService()
+    
+    var body: some View {
+        if let url = fileManagerService.getPathForData(file: file) {
+            VideoPlayer(player: AVPlayer(url: url))
+                .scaledToFit()
         }
     }
 }

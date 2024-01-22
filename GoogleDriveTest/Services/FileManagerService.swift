@@ -10,9 +10,9 @@ import SwiftUI
 class FileManagerService {
     static let instance = FileManagerService()
     
-    func saveImageData(data: Data, id: String) {
+    func saveImageData(data: Data, file: MyFile) {
         
-        guard let path = getPathForData(id: id) else { return }
+        guard let path = getPathForData(file: file) else { return }
 
         do {
             try data.write(to: path)
@@ -21,9 +21,9 @@ class FileManagerService {
         }
     }
     
-    func getImageData(id: String) -> Data? {
+    func getImageData(file: MyFile) -> Data? {
         
-        guard let path = getPathForData(id: id) else { return nil }
+        guard let path = getPathForData(file: file) else { return nil }
         guard FileManager.default.fileExists(atPath: path.path) else {
             debugPrint("🧨", "FileManagerService: file does not exist")
             return nil
@@ -33,11 +33,12 @@ class FileManagerService {
 
     }
     
-    func getPathForData(id: String) -> URL? {
-        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(id).jpg") else {
-            debugPrint("🧨", "FileManagerService: getting path")
-            return nil
-        }
+    func getPathForData(file: MyFile) -> URL? {
+
+        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(file.fileId).\(file.ext.rawValue)") else {
+                debugPrint("🧨", "FileManagerService: getting path")
+                return nil
+            }
         return path
         
     }

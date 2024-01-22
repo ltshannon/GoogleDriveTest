@@ -47,10 +47,10 @@ struct HomeView: View {
                     }
                 }
                 LazyVGrid(columns: columnStepperEnv.gridColumns) {
-                    ForEach(listFileService.imageFiles) { item in
+                    ForEach(listFileService.mediaFiles) { item in
                         GeometryReader { geo in
                             NavigationLink {
-                                DownloadImageView(file: item, images: listFileService.imageFiles)
+                                DownloadImageView(file: item, images: listFileService.mediaFiles)
                             } label: {
                                 GridItemView(size: geo.size.width, file: item)
                             }

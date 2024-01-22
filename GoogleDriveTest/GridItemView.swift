@@ -11,15 +11,33 @@ struct GridItemView: View {
 
     var body: some View {
         VStack {
-            if let data = getFileDataService.imageData, let uiImage = UIImage(data: data) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: size, height: size)
+            if file.mimeType == .jpeg {
+                if let data = getFileDataService.imageData, let uiImage = UIImage(data: data) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: size, height: size)
+                }
+            } else if file.mimeType == .pdf {
+                VStack {
+                    Image(systemName: "doc")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: size * 0.8, height: size * 0.8)
+                    Text(file.name)
+                }
+            } else if file.mimeType == .mp4 {
+                VStack {
+                    Image(systemName: "movieclapper")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: size * 0.8, height: size * 0.8)
+                    Text(file.name)
+                }
             }
         }
         .task {
-            await getFileDataService.getData(id: file.fileId)
+            await getFileDataService.getData(file: file)
         }
     }
 }

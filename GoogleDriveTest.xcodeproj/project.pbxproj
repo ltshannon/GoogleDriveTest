@@ -61,6 +61,7 @@
 		B1C9F6832B57786200B8859B /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9F6822B57786200B8859B /* FirebaseService.swift */; };
 		B1C9F6852B58731C00B8859B /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9F6842B58731C00B8859B /* AuthenticationService.swift */; };
 		B1C9F6872B58A9DE00B8859B /* AppAlertBadgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9F6862B58A9DE00B8859B /* AppAlertBadgeManager.swift */; };
+		B1C9F6892B5CC07B00B8859B /* PDFKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9F6882B5CC07B00B8859B /* PDFKitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		B1C9F6822B57786200B8859B /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		B1C9F6842B58731C00B8859B /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		B1C9F6862B58A9DE00B8859B /* AppAlertBadgeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlertBadgeManager.swift; sourceTree = "<group>"; };
+		B1C9F6882B5CC07B00B8859B /* PDFKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				B117A2A42B4CFBC20082A75B /* Dependencies.swift */,
 				B117A2AE2B50D6E50082A75B /* DownloadImageView.swift */,
 				B117A2AA2B50A7880082A75B /* SettingsView.swift */,
+				B1C9F6882B5CC07B00B8859B /* PDFKitView.swift */,
 				B117A2A82B50A65C0082A75B /* ViewModifiers.swift */,
 				B117A2882B4CF0220082A75B /* Assets.xcassets */,
 				B1C9F6032B5743CE00B8859B /* GoogleService-Info.plist */,
@@ -318,6 +321,7 @@
 				B117A2AD2B50ACB90082A75B /* HomeView.swift in Sources */,
 				B117A2A52B4CFBC20082A75B /* Dependencies.swift in Sources */,
 				B131C5032B54E62500853A55 /* SaveFileService.swift in Sources */,
+				B1C9F6892B5CC07B00B8859B /* PDFKitView.swift in Sources */,
 				B117A2872B4CF0210082A75B /* ContentView.swift in Sources */,
 				B117A2AB2B50A7880082A75B /* SettingsView.swift in Sources */,
 				B117A2852B4CF0210082A75B /* GoogleDriveTestApp.swift in Sources */,
