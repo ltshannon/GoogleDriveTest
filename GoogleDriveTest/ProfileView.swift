@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     @AppStorage("username") var username: String = ""
+    @EnvironmentObject var firebaseService: FirebaseService
+    @EnvironmentObject var notificationManager: NotificationManager
     @Environment(\.dismiss) private var dismiss
     @State var name = ""
     
@@ -22,6 +24,9 @@ struct ProfileView: View {
                 }
                 Button {
                     username = name
+                    Task {
+                        await firebaseService.updateFCM(fcm: notificationManager.fcmToken, username: name)
+                    }
                     dismiss()
                     
                 } label: {

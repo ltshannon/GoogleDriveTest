@@ -22,7 +22,6 @@ struct FCM: Codable, Identifiable, Hashable {
 }
 
 class FirebaseService: ObservableObject {
-    @AppStorage("username") var username: String = ""
     @Published var fcms: [FCM] = []
     static let shared = FirebaseService()
     private var fcmListener: ListenerRegistration?
@@ -67,6 +66,8 @@ class FirebaseService: ObservableObject {
     }
     
     func writeFCM(fcm: String) async {
+        @AppStorage("username") var username: String = ""
+        
         do {
             try await database.collection("fcms").addDocument(data: [
                 "fcm": fcm,
@@ -75,6 +76,23 @@ class FirebaseService: ObservableObject {
             ])
         } catch {
             debugPrint("🧨", "writeFCM failed: \(error.localizedDescription)")
+        }
+    }
+    
+    func updateFCM(fcm: String, username: String) async {
+
+        let array = fcms.filter({ $0.fcm == fcm })
+        if array.count == 1, let docId = array[0].id {
+            let value = [
+                "date": FieldValue.serverTimestamp(),
+                "name": username
+            ] as [String : Any]
+            do {
+                try await database.collection("fcms").document(docId).updateData(value)
+                
+            } catch {
+                debugPrint("🧨", "updateFCM: \(error)")
+            }
         }
     }
     

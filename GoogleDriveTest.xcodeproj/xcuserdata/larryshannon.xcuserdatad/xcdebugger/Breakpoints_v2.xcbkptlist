@@ -3,4 +3,132 @@
    uuid = "F19FB033-2A57-430F-9CCD-76BA8AD3D3FA"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C81AD65-E024-4A0E-82C4-70CB44D84CC5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleDriveTest/Services/FirebaseService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "updateFCM(fcm:username:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0C81AD65-E024-4A0E-82C4-70CB44D84CC5 - 8aa86290255a14e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GoogleDriveTest.FirebaseService.updateFCM(fcm: Swift.String, username: Swift.String) async -&gt; ()"
+                  moduleName = "GoogleDriveTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/larryshannon/Desktop/GoogleDriveTest/GoogleDriveTest/Services/FirebaseService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "0C81AD65-E024-4A0E-82C4-70CB44D84CC5 - d698a8a5fb3ba127"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GoogleDriveTest.FCM) -&gt; Swift.Bool in GoogleDriveTest.FirebaseService.updateFCM(fcm: Swift.String, username: Swift.String) async -&gt; ()"
+                  moduleName = "GoogleDriveTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/larryshannon/Desktop/GoogleDriveTest/GoogleDriveTest/Services/FirebaseService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "0C81AD65-E024-4A0E-82C4-70CB44D84CC5 - d698a8a5fb3ba127"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GoogleDriveTest.FCM) -&gt; Swift.Bool in GoogleDriveTest.FirebaseService.updateFCM(fcm: Swift.String, username: Swift.String) async -&gt; ()"
+                  moduleName = "GoogleDriveTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/larryshannon/Desktop/GoogleDriveTest/GoogleDriveTest/Services/FirebaseService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07BC11ED-7780-4CF7-A59E-BC3301A08E18"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleDriveTest/Services/FirebaseService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "updateFCM(fcm:username:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "07BC11ED-7780-4CF7-A59E-BC3301A08E18 - 8aa86290255a1436"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for GoogleDriveTest.FirebaseService.updateFCM(fcm: Swift.String, username: Swift.String) async -&gt; ()"
+                  moduleName = "GoogleDriveTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/larryshannon/Desktop/GoogleDriveTest/GoogleDriveTest/Services/FirebaseService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "07BC11ED-7780-4CF7-A59E-BC3301A08E18 - 186f411da445d634"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for GoogleDriveTest.FirebaseService.updateFCM(fcm: Swift.String, username: Swift.String) async -&gt; ()"
+                  moduleName = "GoogleDriveTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/larryshannon/Desktop/GoogleDriveTest/GoogleDriveTest/Services/FirebaseService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "07BC11ED-7780-4CF7-A59E-BC3301A08E18 - e0d031dce4367735"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for GoogleDriveTest.FirebaseService.updateFCM(fcm: Swift.String, username: Swift.String) async -&gt; ()"
+                  moduleName = "GoogleDriveTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/larryshannon/Desktop/GoogleDriveTest/GoogleDriveTest/Services/FirebaseService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "632">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
