@@ -47,7 +47,7 @@ struct SettingsView: View {
                 NavigationLink {
                     DisplayFCMsView()
                 } label: {
-                    Text("Display FCMs")
+                    Text("Display Users")
                         .DefaultTextButtonStyle()
                 }
                 NavigationLink {
