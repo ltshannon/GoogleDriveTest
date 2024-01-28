@@ -38,3 +38,15 @@ extension View {
         modifier(EmailPaswordModifier())
     }
 }
+
+public extension Date {
+    
+    static func formatDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        dateFormatter.timeZone = TimeZone.current
+        let value = "\(dateFormatter.string(from: date))"
+        return value
+    }
+}

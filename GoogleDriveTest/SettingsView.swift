@@ -19,43 +19,57 @@ struct SettingsView: View {
     @State private var text = ""
     
     var body: some View {
-        VStack {
-            if isSignedIn {
-                Text("You are signed in")
-                Button(role: .destructive) {
-                    Task {
-                        await client.auth.signOut()
-                        isSignedIn = false
-                        dismiss()
+        NavigationStack {
+            VStack {
+                if isSignedIn {
+                    Text("You are signed in")
+                    Button(role: .destructive) {
+                        Task {
+                            await client.auth.signOut()
+                            isSignedIn = false
+                            dismiss()
+                        }
+                    } label: {
+                        Text("Sign Out")
+                            .DefaultTextButtonStyle()
                     }
+                } else {
+                    Text("You are signed out")
+                }
+                Link("Privacy Policy", destination: URL(string: "https://drive.google.com/file/d/17PeKroJCJooojBkip4nYA5syXAQRgQZO/view?usp=sharing")!)
+                    .DefaultTextButtonStyle()
+                Button(role: .destructive) {
+                    showingAlert = true
                 } label: {
-                    Text("Sign Out")
+                    Text("Send Notification")
                         .DefaultTextButtonStyle()
                 }
-            } else {
-                Text("You are signed out")
+                NavigationLink {
+                    DisplayFCMsView()
+                } label: {
+                    Text("Display FCMs")
+                        .DefaultTextButtonStyle()
+                }
+                NavigationLink {
+                    ProfileView()
+                } label: {
+                    Text("Profile")
+                        .DefaultTextButtonStyle()
+                }
+                Button(role: .destructive) {
+                    dismiss()
+                } label: {
+                    Text("Cancel")
+                        .DefaultTextButtonStyle()
+                }
             }
-            Link("Privacy Policy", destination: URL(string: "https://drive.google.com/file/d/17PeKroJCJooojBkip4nYA5syXAQRgQZO/view?usp=sharing")!)
-                .DefaultTextButtonStyle()
-            Button(role: .destructive) {
-                showingAlert = true
-            } label: {
-                Text("Send Notification")
-                    .DefaultTextButtonStyle()
+            .padding()
+            .alert("Send Noticiation", isPresented: $showingAlert) {
+                TextField("Enter your text", text: $text)
+                Button("OK", action: callFirebaseFunction)
+            } message: {
+                Text("Enter text you would like to send in the noticiation")
             }
-            Button(role: .destructive) {
-                dismiss()
-            } label: {
-                Text("Cancel")
-                    .DefaultTextButtonStyle()
-            }
-        }
-        .padding()
-        .alert("Send Noticiation", isPresented: $showingAlert) {
-            TextField("Enter your text", text: $text)
-            Button("OK", action: callFirebaseFunction)
-        } message: {
-            Text("Enter text you would like to send in the noticiation")
         }
     }
     

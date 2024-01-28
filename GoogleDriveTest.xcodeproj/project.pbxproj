@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10F62172B60A2EB009C1272 /* DisplayFCMsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10F62162B60A2EB009C1272 /* DisplayFCMsView.swift */; };
+		B10F62192B60B88A009C1272 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10F62182B60B88A009C1272 /* ProfileView.swift */; };
 		B117A2852B4CF0210082A75B /* GoogleDriveTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B117A2842B4CF0210082A75B /* GoogleDriveTestApp.swift */; };
 		B117A2872B4CF0210082A75B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B117A2862B4CF0210082A75B /* ContentView.swift */; };
 		B117A2892B4CF0220082A75B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B117A2882B4CF0220082A75B /* Assets.xcassets */; };
@@ -65,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B10F62162B60A2EB009C1272 /* DisplayFCMsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayFCMsView.swift; sourceTree = "<group>"; };
+		B10F62182B60B88A009C1272 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B117A2812B4CF0210082A75B /* GoogleDriveTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleDriveTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B117A2842B4CF0210082A75B /* GoogleDriveTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveTestApp.swift; sourceTree = "<group>"; };
 		B117A2862B4CF0210082A75B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				B117A2A42B4CFBC20082A75B /* Dependencies.swift */,
 				B117A2AE2B50D6E50082A75B /* DownloadImageView.swift */,
 				B117A2AA2B50A7880082A75B /* SettingsView.swift */,
+				B10F62162B60A2EB009C1272 /* DisplayFCMsView.swift */,
+				B10F62182B60B88A009C1272 /* ProfileView.swift */,
 				B1C9F6882B5CC07B00B8859B /* PDFKitView.swift */,
 				B117A2A82B50A65C0082A75B /* ViewModifiers.swift */,
 				B117A2882B4CF0220082A75B /* Assets.xcassets */,
@@ -326,10 +332,12 @@
 				B117A2AB2B50A7880082A75B /* SettingsView.swift in Sources */,
 				B117A2852B4CF0210082A75B /* GoogleDriveTestApp.swift in Sources */,
 				B117A2B12B50D8230082A75B /* ListFileService.swift in Sources */,
+				B10F62172B60A2EB009C1272 /* DisplayFCMsView.swift in Sources */,
 				B117A2B62B5218A30082A75B /* GridItemView.swift in Sources */,
 				B1C9F6852B58731C00B8859B /* AuthenticationService.swift in Sources */,
 				B1C9F6812B575F7C00B8859B /* NotificationManager.swift in Sources */,
 				B117A2BA2B5237470082A75B /* FileManagerService.swift in Sources */,
+				B10F62192B60B88A009C1272 /* ProfileView.swift in Sources */,
 				B117A2BC2B536D380082A75B /* ImageSaverService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,7 +471,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoogleDriveTest/GoogleDriveTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"GoogleDriveTest/Preview Content\"";
 				DEVELOPMENT_TEAM = DDDAQ32TPA;
 				ENABLE_PREVIEWS = YES;
@@ -481,7 +489,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.breakawaydesign.GoogleDriveTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -497,7 +505,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoogleDriveTest/GoogleDriveTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"GoogleDriveTest/Preview Content\"";
 				DEVELOPMENT_TEAM = DDDAQ32TPA;
 				ENABLE_PREVIEWS = YES;
@@ -515,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.breakawaydesign.GoogleDriveTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

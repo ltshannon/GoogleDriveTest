@@ -49,7 +49,7 @@ class AuthenticationService: ObservableObject {
             }
             
             //case where no user auth, likely first run
-            guard let currentUser = auth.currentUser else {
+            guard let _ = auth.currentUser else {
                 self.state = .loggedOut
                 return
             }

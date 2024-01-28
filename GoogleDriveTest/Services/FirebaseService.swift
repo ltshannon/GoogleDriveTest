@@ -17,12 +17,15 @@ let database = Firestore.firestore()
 struct FCM: Codable, Identifiable, Hashable {
     @DocumentID var id: String?
     var fcm: String
+    var date: Date?
+    var name: String?
 }
 
 class FirebaseService: ObservableObject {
+    @AppStorage("username") var username: String = ""
+    @Published var fcms: [FCM] = []
     static let shared = FirebaseService()
     private var fcmListener: ListenerRegistration?
-    @Published var fcms: [FCM] = []
     
     func getFCM() {
         let listener = database.collection("fcms").addSnapshotListener { querySnapshot, error in
@@ -66,7 +69,9 @@ class FirebaseService: ObservableObject {
     func writeFCM(fcm: String) async {
         do {
             try await database.collection("fcms").addDocument(data: [
-                "fcm": fcm
+                "fcm": fcm,
+                "date": FieldValue.serverTimestamp(),
+                "name": username
             ])
         } catch {
             debugPrint("🧨", "writeFCM failed: \(error.localizedDescription)")

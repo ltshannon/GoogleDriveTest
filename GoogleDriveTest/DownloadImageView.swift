@@ -19,6 +19,7 @@ struct DownloadImageView: View {
     @State var rightArrow = true
     @State var leftFile: MyFile = MyFile(id: "", fileId: "", mimeType: .none, name: "", createdTime: Date(), modifiedTime: Date(), ext: .none)
     @State var rightFile: MyFile = MyFile(id: "", fileId: "", mimeType: .none, name: "", createdTime: Date(), modifiedTime: Date(), ext: .none)
+    @State private var rotate = 0.0
     
     var body: some View {
         VStack {
@@ -60,6 +61,8 @@ struct DownloadImageView: View {
                     }
                     .disabled(rightArrow)
                 }
+                .rotationEffect(.degrees(rotate))
+                .animation(.easeIn, value: rotate)
                 if currentFile.mimeType == .jpeg {
                     Button("Save Image to photo library") {
                         if let uiImage = UIImage(data: data) {
@@ -68,6 +71,13 @@ struct DownloadImageView: View {
                     }
                     .DefaultTextButtonStyle()
                 }
+                Spacer()
+                Button {
+                    rotate += 90
+                } label: {
+                    Text("Rotate")
+                }
+                .DefaultTextButtonStyle()
                 Spacer()
             }
         }
