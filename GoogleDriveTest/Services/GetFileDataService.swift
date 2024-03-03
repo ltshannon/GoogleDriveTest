@@ -17,7 +17,7 @@ class GetFileDataService: ObservableObject {
     func getData(file: MyFile) async {
         do {
             if let data = fileManagerService.getImageData(file: file) {
-                DispatchQueue.main.async {
+                await MainActor.run {
                     self.imageData = data
                 }
                 return
@@ -27,7 +27,7 @@ class GetFileDataService: ObservableObject {
             
             fileManagerService.saveImageData(data: data, file: file)
             
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.imageData = data
             }
         } catch {

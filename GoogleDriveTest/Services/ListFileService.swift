@@ -53,7 +53,7 @@ class ListFileService: ObservableObject {
                 }
                 
             }
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.folderFiles = self.addFiles(files: fileList.files)
             }
         } catch {
@@ -98,7 +98,7 @@ class ListFileService: ObservableObject {
                 }
             }
             tempFiles += self.addFiles(files: fileList.files)
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.mediaFiles = self.tempFiles
             }
         } catch {

@@ -28,12 +28,12 @@ class SaveFileService: ObservableObject  {
                                             parents: [directory],
                                             data: data)
             debugPrint("😜", "saveFile completed")
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.showSuccess = true
             }
         } catch {
             debugPrint("🧨", "\(error.localizedDescription)")
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.showError = true
                 self.fileUploadFailedMessage = error.localizedDescription
             }
